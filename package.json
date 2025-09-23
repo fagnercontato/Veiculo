@@ -1,0 +1,26 @@
+{
+  "name": "veiculo",
+  "version": "1.0.0",
+  "description": "Cadastro de Veiculos",
+  "homepage": "https://github.com/fagnercontato/Veiculo#readme",
+  "bugs": {
+    "url": "https://github.com/fagnercontato/Veiculo/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fagnercontato/Veiculo.git"
+  },
+  "license": "ISC",
+  "author": "fagnercontato",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.2",
+    "express": "^5.1.0",
+    "express-fileupload": "^1.5.2"
+  },
+  "types": "commonjs"
+}
