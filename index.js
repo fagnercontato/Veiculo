@@ -3,9 +3,9 @@ const controller = require('./controller');
 async function startUp() {
     console.log(`Iniciando a aplicação veiculo`);
     try {
-        
-            controller.server.listen(parseInt(process.env.PORT), function(){
-                console.log(`API Iniciada em ${process.env.PORT}`)
+            const port = process.env.HTTP_PORT
+            controller.server.listen(parseInt(port), function(){
+                console.log(`API Iniciada em ${port}`)
             });
         
     } catch (error) {

@@ -6,6 +6,9 @@ dotenv.config({override: true});
 //         override: true
 //     });
 // }
+
+const controller = require('./api_controller');
+
 const express = require('express');
 const server = express();
 const cors = require('cors');
@@ -18,6 +21,9 @@ async function startServer() {
     server.use(cors());
     server.use(express.json());
     server.use(fileUpload());
+
+    server.get(`/teste`, controller.teste)
+
 }
 
 startServer()
