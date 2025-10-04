@@ -1,0 +1,41 @@
+services:
+  server:
+    container_name: api
+    build:
+      context: .
+    env_file:
+      - .env
+    ports:
+      - "${HTTP_PORT}:${HTTP_PORT}"
+    networks:
+      - application-network
+    depends_on:
+      - veiculo_operacao
+    deploy:
+      resources:
+        limits:
+          cpus: '1'
+          memory: '1GB'
+  veiculo_operacao:
+    container_name: veiculo_operacao
+    image: postgres:17.0-alpine3.20
+    restart: always
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    env_file:
+      - .env
+    ports:
+      - "${POSTGRES_PORT}:${POSTGRES_PORT}"
+    networks:
+      - application-network
+    deploy:
+      resources:
+        limits:
+          cpus: '2'
+          memory: '2GB'
+
+volumes:
+  db-data:
+
+networks:
+  application-network:
