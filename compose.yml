@@ -1,12 +1,14 @@
 services:
   server:
-    container_name: api
-    build:
-      context: .
+    container_name: api-veiculo
+    build: .
+    # entrypoint: ./entrypoint.sh
     env_file:
       - .env
     ports:
       - "${HTTP_PORT}:${HTTP_PORT}"
+    volumes:
+      - .:/home/node/app
     networks:
       - application-network
     depends_on:
