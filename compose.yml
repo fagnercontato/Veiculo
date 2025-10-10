@@ -12,7 +12,8 @@ services:
     networks:
       - application-network
     depends_on:
-      - veiculo_operacao
+      veiculo_operacao:
+        condition: service_healthy
     deploy:
       resources:
         limits:
@@ -27,9 +28,14 @@ services:
     env_file:
       - .env
     ports:
-      - "${POSTGRES_PORT}:${POSTGRES_PORT}"
+      - "${POSTGRES_PORT_1}:${POSTGRES_PORT}"
     networks:
       - application-network
+    healthcheck:
+      test: ["CMD", "pg_isready"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
     deploy:
       resources:
         limits:

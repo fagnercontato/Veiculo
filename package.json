@@ -15,9 +15,13 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "dev": "nodemon index.js"
+    "dev": "nodemon index.js",
+    "migrate": "prisma migrate dev --name init",
+    "generate": "prisma generate",
+    "deploy": "prisma migrate deploy"
   },
   "dependencies": {
+    "@prisma/client": "^6.17.0",
     "cors": "^2.8.5",
     "dotenv": "^17.2.2",
     "express": "^5.1.0",
@@ -26,7 +30,8 @@
   },
   "types": "commonjs",
   "devDependencies": {
-    "nodemon": "^3.1.10"
+    "nodemon": "^3.1.10",
+    "prisma": "^6.17.0"
   },
   "packageManager": "yarn@1.22.22+sha1.ac34549e6aa8e7ead463a7407e1c7390f61a6610"
 }
