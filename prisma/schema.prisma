@@ -15,11 +15,14 @@ datasource db {
 
 model Veiculo {
   id          Int         @id @default(autoincrement())
+  marca       String      @db.VarChar(255)
   modelo      String      @db.VarChar(255)
   tipo        String      @db.VarChar(255)
   cor         String      @db.VarChar(255)
+  cambio      String      @db.VarChar(255)
+  km          Int
   vendido     Boolean
   ano         Int
   preco       Float
-  dataCriacao   DateTime    @default(now()) @map("created_at")
+  dataCriacao DateTime    @default(now()) @map("created_at")
 }

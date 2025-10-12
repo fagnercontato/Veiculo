@@ -10,6 +10,9 @@ done
 
 echo "✅ Banco disponível! Aplicando migrações..."
 
+#Realiza a leitura do schema.prisma
+npx prisma generate
+
 # Aplica as migrações do Prisma
 npx prisma migrate deploy
 
