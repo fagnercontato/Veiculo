@@ -2,6 +2,18 @@
 const connection = require("../db/api_connection")
 
 
+exports.getVeiculos = async function(req, res, next ){
+    try {
+       
+        let retorno = await connection.getVeicutos()
+        
+        res.send(retorno);
+        
+    } catch (error) {
+        res.send(500).json([{msg: `Houve um erro: ${error}`}])
+    }
+}
+
 exports.insert = async function(req, res, next ){
     try {
         const dados = req.body;

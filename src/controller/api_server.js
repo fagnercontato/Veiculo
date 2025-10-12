@@ -22,6 +22,7 @@ async function startServer() {
     server.use(express.json());
     server.use(fileUpload());
 
+    server.get(`/veiculo`, controller.getVeiculos)
     server.post(`/veiculo/insert`, controller.insert)
 
 }
