@@ -33,7 +33,7 @@ services:
       - application-network
     healthcheck:
       test: ["CMD", "pg_isready"]
-      interval: 30s
+      interval: 15s
       timeout: 5s
       retries: 5
     deploy:

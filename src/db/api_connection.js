@@ -2,9 +2,16 @@ const { PrismaClient } = require("@prisma/client");
 
 const prisma = new PrismaClient()
 
-exports.getVeiculo = async function name(params) {
+exports.getVeiculo = async function (vendido) {
     try {
-        const dados = await prisma.veiculo.findMany();
+        const dados = await prisma.veiculo.findMany({
+            where: {
+                vendido : vendido
+            },
+            orderBy: {
+                preco: 'asc',
+            },
+        });
         return dados
         
     } catch (error) {

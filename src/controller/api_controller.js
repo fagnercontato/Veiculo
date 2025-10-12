@@ -5,8 +5,9 @@ const utils = require("./api_utils");
 
 exports.getVeiculo = async function(req, res, next ){
     try {
-       
-        let retorno = await connection.getVeiculo()
+
+        const vendido = req.query["vendido"] || undefined
+        let retorno = await connection.getVeiculo(vendido)
         
         res.send(retorno);
         
