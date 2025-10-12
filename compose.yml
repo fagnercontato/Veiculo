@@ -12,15 +12,15 @@ services:
     networks:
       - application-network
     depends_on:
-      veiculo_operacao:
+      db:
         condition: service_healthy
     deploy:
       resources:
         limits:
           cpus: '1'
           memory: '1GB'
-  veiculo_operacao:
-    container_name: veiculo_operacao
+  db:
+    container_name: db
     image: postgres:17.0-alpine3.20
     restart: always
     volumes:
@@ -28,7 +28,7 @@ services:
     env_file:
       - .env
     ports:
-      - "${POSTGRES_PORT_1}:${POSTGRES_PORT}"
+      - "${POSTGRES_PORT}:${POSTGRES_PORT}"
     networks:
       - application-network
     healthcheck:

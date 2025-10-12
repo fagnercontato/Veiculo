@@ -1,5 +1,5 @@
 
-const connection = require("./connection/api_connection")
+const connection = require("../db/api_connection")
 
 
 exports.insert = async function(req, res, next ){

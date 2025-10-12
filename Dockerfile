@@ -10,6 +10,8 @@ RUN rm -rf node_modules
 
 RUN npm install
 
-CMD ["node", "index.js"]
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+ENTRYPOINT ["/entrypoint.sh"]
 
 EXPOSE 3000

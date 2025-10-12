@@ -1,4 +1,4 @@
-const controller = require('./controller');
+const controller = require('./src/controller');
 
 async function startUp() {
     console.log(`Iniciando a aplicação veiculo`);
