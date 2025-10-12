@@ -24,5 +24,6 @@ model Veiculo {
   vendido     Boolean
   ano         Int
   preco       Float
-  dataCriacao DateTime    @default(now()) @map("created_at")
+  dataCriacao DateTime    @default(now()) @map("created_v")
+  dataAtualizacao DateTime @default(now()) @map("updated_v")
 }
