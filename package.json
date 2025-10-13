@@ -26,12 +26,14 @@
     "dotenv": "^17.2.2",
     "express": "^5.1.0",
     "express-fileupload": "^1.5.2",
+    "swagger-ui-express": "^5.0.1",
     "yarn": "^1.22.22"
   },
   "types": "commonjs",
   "devDependencies": {
     "nodemon": "^3.1.10",
-    "prisma": "^6.17.0"
+    "prisma": "^6.17.0",
+    "swagger-autogen": "^2.23.7"
   },
   "packageManager": "yarn@1.22.22+sha1.ac34549e6aa8e7ead463a7407e1c7390f61a6610"
 }

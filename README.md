@@ -8,10 +8,10 @@
 
 Para uma compreensão completa das funcionalidades e como interagir com a API, use o Postman.
 
-### Importando a coleção":
+### Importando a collection:
 
 1. **Abra o Postman.**
-2. **Importe:** Clique em "Importar" e selecione o arquivo de coleção.
+2. **Importe:** Clique em "Importar" e selecione o arquivo collection.
 3. **Local:** Procurar [`veiculo.postman_collection.json`](https://github.com/fagnercontato/Veiculo/blob/develop/docs/Postman/veiculo.postman_collection.json) na pasta `docs`.
 4. **Explore:** A coleção estará disponível para você testar os endpoints.
 
