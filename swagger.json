@@ -1,0 +1,131 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "API de Veículos",
+    "version": "1.0.0",
+    "description": "Api para gerenciamento de veiculos"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000"
+    }
+  ],
+  "paths": {
+    "/veiculo": {
+      "get": {
+        "summary": "Buscar todos os veículos",
+        "parameters": [
+          {
+            "name": "vendido",
+            "in": "query",
+            "description": "Filtrar por veículos vendidos ou não",
+            "required": false,
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Lista de veículos"
+          }
+        }
+      },
+      "post": {
+        "summary": "Criar veículo",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/createVeiculo"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Veículo criado com sucesso"
+          }
+        }
+      },
+      "put": {
+        "summary": "Atualizar veículo",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/updateVeiculo"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Veículo atualizado com sucesso"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Deletar veículo",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "integer"
+                  }
+                },
+                "required": ["id"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Veículo deletado com sucesso"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "createVeiculo": {
+        "type": "object",
+        "properties": {
+          "marca": { "type": "string" },
+          "modelo": { "type": "string" },
+          "tipo": { "type": "string" },
+          "cor": { "type": "string" },
+          "cambio": { "type": "string" },
+          "km": { "type": "integer" },
+          "vendido": { "type": "boolean" },
+          "ano": { "type": "integer" },
+          "preco": { "type": "number" }
+        },
+        "required": ["marca", "modelo", "tipo", "cor", "cambio", "km", "vendido", "ano", "preco"]
+      },
+      "updateVeiculo": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "integer" },
+          "marca": { "type": "string" },
+          "modelo": { "type": "string" },
+          "tipo": { "type": "string" },
+          "cor": { "type": "string" },
+          "cambio": { "type": "string" },
+          "km": { "type": "integer" },
+          "vendido": { "type": "boolean" },
+          "ano": { "type": "integer" },
+          "preco": { "type": "number" }
+        },
+        "required": ["marca", "modelo", "tipo", "cor", "cambio", "km", "vendido", "ano", "preco"]
+      }
+    }
+  }
+}
