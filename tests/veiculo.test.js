@@ -1,70 +1,42 @@
-const request = require('supertest');
-const app = require('../src/controller').server
-const http = 'http://localhost:3000'
+jest.mock('../prisma/client', () => require('./__mocks__/prisma'));
+const prisma = require('../prisma/client');
 
-describe('Rotas de Veículo', () => {
-    let idGerado
-    test('GET /veiculo - deve retornar todos os veículos', async () => {
-        const res = await request(http).get('/veiculo');
-        expect(res.statusCode).toBe(200);
-        expect(Array.isArray(res.body)).toBe(true);
-    });
+const veiculoRepo = require('../src/db/veiculoRepository');
 
-    test('POST /veiculo - deve criar um novo veículo', async () => {
-        const novoVeiculo = {
-            marca: "chevrolet",
-            modelo: "classic",
-            tipo: "passeio",
-            cor: "verde",
-            cambio: "manual",
-            km: 98000,
-            vendido: false,
-            ano: 2011,
-            preco: 15000
-        };
+describe('Repositório de Veículos com Prisma', () => {
+  test('criarVeiculo deve retornar veículo com ID', async () => {
+    const novo = { modelo: 'Corsa', preco: 12000 };
+    prisma.veiculo.create.mockResolvedValue({ id: 1, ...novo });
 
-        const res = await request(http)
-            .post('/veiculo')
-            .send(novoVeiculo)
-            .set('Accept', 'application/json');
+    const resultado = await veiculoRepo.criarVeiculo(novo);
 
-        idGerado = res.body.id
+    expect(resultado).toHaveProperty('id', 1);
+    expect(resultado.modelo).toBe('Corsa');
+  });
 
-        expect(res.statusCode).toBe(200,201);
-        expect(res.body).toHaveProperty('id');
-    });
+  test('listarVeiculos deve retornar array', async () => {
+    prisma.veiculo.findMany.mockResolvedValue([{ id: 1, modelo: 'Corsa' }]);
 
-    test('PUT /veiculo - deve atualizar um veículo existente', async () => {
-        const veiculoAtualizado = {
-            id: idGerado,
-            marca: "chevrolet",
-            modelo: "classic",
-            tipo: "passeio",
-            cor: "verde",
-            cambio: "manual",
-            km: 98000,
-            vendido: false,
-            ano: 2011,
-            preco: 16000
-        };
+    const lista = await veiculoRepo.listarVeiculos();
 
-        const res = await request(http)
-            .put('/veiculo')
-            .send(veiculoAtualizado)
-            .set('Accept', 'application/json');
+    expect(Array.isArray(lista)).toBe(true);
+    expect(lista[0].modelo).toBe('Corsa');
+  });
 
-        expect(res.statusCode).toBe(200, 201);
-        expect(res.body).toHaveProperty('id', veiculoAtualizado.id);
-    });
+  test('atualizarVeiculo deve modificar dados', async () => {
+    const atualizado = { id: 1, preco: 13000 };
+    prisma.veiculo.update.mockResolvedValue(atualizado);
 
-    test('DELETE /veiculo - deve deletar um veículo', async () => {
-        const res = await request(http)
-            .delete('/veiculo')
-            .send({ id: idGerado })
-            .set('Accept', 'application/json');
+    const resultado = await veiculoRepo.atualizarVeiculo(atualizado);
 
-        expect(res.statusCode).toBe(200,201);
-        expect(res.body).toHaveProperty('id');
-    });
+    expect(resultado.preco).toBe(13000);
+  });
 
+  test('deletarVeiculo deve remover veículo', async () => {
+    prisma.veiculo.delete.mockResolvedValue({ id: 1 });
+
+    const resultado = await veiculoRepo.deletarVeiculo(1);
+
+    expect(resultado).toHaveProperty('id', 1);
+  });
 });
