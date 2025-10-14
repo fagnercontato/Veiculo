@@ -19,7 +19,8 @@
     "migrate": "prisma migrate dev --name init",
     "generate": "prisma generate",
     "deploy": "prisma migrate deploy",
-    "test": "jest"
+    "test": "jest --coverage"
+
 
   },
   "dependencies": {
