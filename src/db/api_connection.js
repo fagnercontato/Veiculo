@@ -9,9 +9,9 @@ exports.getVeiculo = async (vendido) => {
       orderBy: { preco: 'asc' },
     });
     return dados;
-  } catch (erro) {
-    console.error(`Erro ao buscar veículos: ${erro.message}`);
-    throw erro;
+  } catch (error) {
+    console.error(`Erro ao buscar veículos: ${error.message}`);
+    throw error;
   }
 };
 
@@ -22,9 +22,9 @@ exports.createVeiculo = async (dados) => {
       data: dados,
     });
     return novoVeiculo;
-  } catch (erro) {
-    console.error(`Erro ao criar veículo: ${erro.message}`);
-    throw erro;
+  } catch (error) {
+    console.error(`Erro ao criar veículo: ${error.message}`);
+    throw error;
   }
 };
 
@@ -42,9 +42,9 @@ exports.updateVeiculo = async (dados) => {
     });
 
     return veiculoAtualizado;
-  } catch (erro) {
-    console.error(`Erro ao atualizar veículo: ${erro.message}`);
-    throw erro;
+  } catch (error) {
+    console.error(`Erro ao atualizar veículo: ${error.message}`);
+    throw error;
   }
 };
 
@@ -55,8 +55,8 @@ exports.deleteVeiculo = async (id) => {
       where: { id },
     });
     return veiculoRemovido;
-  } catch (erro) {
-    console.error(`Erro ao excluir veículo: ${erro.message}`);
-    throw erro;
+  } catch (error) {
+    console.error(`Erro ao excluir veículo: ${error.message}`);
+    throw error;
   }
 };
