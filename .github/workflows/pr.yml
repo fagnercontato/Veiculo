@@ -14,10 +14,10 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v3
 
       - name: Using Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v3
         with:
           node-version: 18.
 
@@ -30,12 +30,12 @@ jobs:
     name: SonarQube
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v3
         with:
           fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
       
       - name: Using Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v3
         with:
           node-version: 18.
 
@@ -44,7 +44,7 @@ jobs:
           npm install
 
       - name: Run tests with coverage
-        run: npm test
+        run: npm run test
 
       - name: SonarQube Scan
         uses: SonarSource/sonarqube-scan-action@v6
