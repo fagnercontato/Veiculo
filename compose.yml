@@ -1,0 +1,49 @@
+services:
+  server:
+    container_name: api-veiculo
+    build: .
+    # entrypoint: ./entrypoint.sh
+    env_file:
+      - .env
+    ports:
+      - "${HTTP_PORT}:${HTTP_PORT}"
+    volumes:
+      - .:/home/node/app
+    networks:
+      - application-network
+    depends_on:
+      db:
+        condition: service_healthy
+    deploy:
+      resources:
+        limits:
+          cpus: '1'
+          memory: '1GB'
+  db:
+    container_name: db
+    image: postgres:17.0-alpine3.20
+    restart: always
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    env_file:
+      - .env
+    ports:
+      - "${POSTGRES_PORT}:${POSTGRES_PORT}"
+    networks:
+      - application-network
+    healthcheck:
+      test: ["CMD", "pg_isready"]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+    deploy:
+      resources:
+        limits:
+          cpus: '2'
+          memory: '2GB'
+
+volumes:
+  db-data:
+
+networks:
+  application-network:
