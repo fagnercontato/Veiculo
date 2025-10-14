@@ -11,7 +11,7 @@ const swaggerUi = require("swagger-ui-express");
 const swaggerDocument = require('../../swagger.json');
 
 
-async function startServer() {
+function startServer() {
     
     server.use(cors());
     server.use(express.json());
