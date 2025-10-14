@@ -20,8 +20,6 @@
     "generate": "prisma generate",
     "deploy": "prisma migrate deploy",
     "test": "jest --coverage"
-
-
   },
   "dependencies": {
     "@prisma/client": "^6.17.0",
@@ -36,6 +34,7 @@
   "types": "commonjs",
   "devDependencies": {
     "jest": "^30.2.0",
+    "jest-sonar-reporter": "^2.0.0",
     "nodemon": "^3.1.10",
     "prisma": "^6.17.0",
     "supertest": "^7.1.4",
