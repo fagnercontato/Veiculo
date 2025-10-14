@@ -6,11 +6,9 @@ const utils = require("./api_utils");
 exports.getVeiculo = async function(req, res, next ){
     try {
 
-        let vendido;
-        if (req.consulta["vendido"]) {
-            vendido = rreq.query["vendido"] ==="true" ? true : false
-        } else {
-            vendido = undefined;
+        let vendido = undefined
+        if (req.query["vendido"]) {
+            vendido = req.query["vendido"] ==="true" ? true : false
         }
 
         let retorno = await connection.getVeiculo(vendido)
