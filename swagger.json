@@ -124,7 +124,7 @@
           "ano": { "type": "integer" },
           "preco": { "type": "number" }
         },
-        "required": ["marca", "modelo", "tipo", "cor", "cambio", "km", "vendido", "ano", "preco"]
+        "required": ["marca", "modelo", "tipo", "cor", "cambio", "km", "vendido", "ano", "preco", "id"]
       }
     }
   }
