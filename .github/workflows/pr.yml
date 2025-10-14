@@ -39,11 +39,13 @@ jobs:
         with:
           node-version: 18.
 
-      - name: run intall and build
+      - name: install dependencies
         run: | 
           npm install
-          npm run test
-          
+
+      - name: Run tests with coverage
+        run: npm test
+
       - name: SonarQube Scan
         uses: SonarSource/sonarqube-scan-action@v6
         env:
