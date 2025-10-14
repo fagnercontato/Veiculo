@@ -47,6 +47,17 @@ jobs:
         run: npm test
 
       - name: SonarQube Scan
-        uses: SonarSource/sonarqube-scan-action@v6
+        # uses: SonarSource/sonarqube-scan-action@v6
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        run: |
+          npm install -g sonar-scanner
+          sonar-scanner \
+            -Dsonar.projectKey=meu-projeto-node \
+            -Dsonar.sources=src \
+            -Dsonar.tests=tests \
+            -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info \
+            -Dsonar.host.url=https://seu-servidor-sonarqube.com \
+            -Dsonar.login=$SONAR_TOKEN
+
+        
