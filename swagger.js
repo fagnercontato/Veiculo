@@ -6,7 +6,7 @@
  const doc = {
     info: {
         title: "Api Veiculos",
-        description: "Esta aplicação permite gerenciar os veiculos"
+        description: "Esta aplicação permite gerenciar os cadastramento de veiculos"
         
     },
     host: "http://localhost:3000",
