@@ -10,7 +10,7 @@
         
     },
     host: "http://localhost:3000",
-    schemes: ["http"]
+    schemes: [ "http" ]
  }
 
  swaggerAutogen()(outputFile, endPontFiles, doc);
